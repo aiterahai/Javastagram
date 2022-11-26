@@ -13,6 +13,8 @@ public enum ErrorCode {
     INVALID_TOKEN(401, "AUTH-401-2", "Token Invalid"),
     PASSWORD_NOT_MATCH(401, "USER-401-1", "Password Not Match"),
 
+    EARLY_CHANGE_ACCOUNT_ID(403, "USER-403-1", "Waiting Time Does Not Pass"),
+
     USER_NOT_FOUND(404, "USER-404-1", "User Not Found"),
 
     ACCOUNT_ID_EXISTS(409, "USER-409-1", "Account Id Already Exists"),
