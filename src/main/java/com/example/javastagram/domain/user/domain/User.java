@@ -24,4 +24,8 @@ public class User extends BaseTimeEntity {
     @NotNull
     @Column(columnDefinition = "CHAR(60)")
     private String password;
+
+    public void changeAccountId(String accountId) {
+        this.accountId = accountId;
+    }
 }
