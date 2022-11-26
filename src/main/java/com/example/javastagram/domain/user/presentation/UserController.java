@@ -1,8 +1,10 @@
 package com.example.javastagram.domain.user.presentation;
 
+import com.example.javastagram.domain.user.presentation.dto.request.ChangeAccountIdRequest;
 import com.example.javastagram.domain.user.presentation.dto.request.LoginRequest;
 import com.example.javastagram.domain.user.presentation.dto.request.SignUpRequest;
 import com.example.javastagram.domain.user.presentation.dto.response.TokenResponse;
+import com.example.javastagram.domain.user.service.ChangeAccountIdService;
 import com.example.javastagram.domain.user.service.LoginService;
 import com.example.javastagram.domain.user.service.SignUpService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ public class UserController {
 
     private final SignUpService signUpService;
     private final LoginService loginService;
+    private final ChangeAccountIdService changeAccountIdService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -26,8 +29,14 @@ public class UserController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("login")
+    @PostMapping("/login")
     public TokenResponse login(@RequestBody @Valid LoginRequest request) {
         return loginService.execute(request);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/modify/id")
+    public void changeAccountId(@RequestBody @Valid ChangeAccountIdRequest request) {
+        changeAccountIdService.execute(request);
     }
 }
