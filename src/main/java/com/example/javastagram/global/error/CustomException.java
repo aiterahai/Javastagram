@@ -1,4 +1,4 @@
-package com.example.javastagram.global.error.exception;
+package com.example.javastagram.global.error;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

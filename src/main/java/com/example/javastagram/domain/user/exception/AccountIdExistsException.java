@@ -1,7 +1,7 @@
 package com.example.javastagram.domain.user.exception;
 
-import com.example.javastagram.global.error.exception.CustomException;
-import com.example.javastagram.global.error.exception.ErrorCode;
+import com.example.javastagram.global.error.CustomException;
+import com.example.javastagram.global.error.ErrorCode;
 
 public class AccountIdExistsException extends CustomException {
     public static final CustomException EXCEPTION =
