@@ -20,6 +20,7 @@ public class SignUpService {
 
     @Transactional
     public void execute(SignUpRequest request) {
+
         if (userFacade.existsUserByAccountId(request.getAccountId())) {
             throw AccountIdExistsException.EXCEPTION;
         }
