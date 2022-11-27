@@ -33,4 +33,8 @@ public class User {
         this.accountId = accountId;
         this.modifiedIdAt = modifiedIdAt;
     }
+
+    public void changePassword(String password) {
+        this.password = password;
+    }
 }
