@@ -21,10 +21,10 @@ public class ChangeAccountIdService {
 
         User user = userFacade.getCurrentUser();
 
-        if (!LocalDateTime.now().minusDays(14).isAfter(user.getModifiedAt())) {
+        if (!LocalDateTime.now().minusDays(14).isAfter(user.getModifiedIdAt())) {
             throw EarlyChangeAccountIdException.EXCEPTION;
         }
 
-        user.changeAccountId(request.getAccountId());
+        user.changeAccountId(request.getAccountId(), LocalDateTime.now());
     }
 }
