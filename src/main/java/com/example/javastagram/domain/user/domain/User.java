@@ -2,16 +2,18 @@ package com.example.javastagram.domain.user.domain;
 
 import com.example.javastagram.global.entity.BaseTimeEntity;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder
 @Getter
-public class User extends BaseTimeEntity {
+public class User{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +27,12 @@ public class User extends BaseTimeEntity {
     @Column(columnDefinition = "CHAR(60)")
     private String password;
 
-    public void changeAccountId(String accountId) {
+    @NotNull
+    @Column(columnDefinition = "DATETIME")
+    private LocalDateTime modifiedIdAt;
+
+    public void changeAccountId(String accountId, LocalDateTime modifiedIdAt) {
         this.accountId = accountId;
+        this.modifiedIdAt = modifiedIdAt;
     }
 }
