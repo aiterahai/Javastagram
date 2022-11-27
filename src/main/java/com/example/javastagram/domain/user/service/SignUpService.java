@@ -10,6 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class SignUpService {
@@ -28,6 +30,7 @@ public class SignUpService {
         User user = User.builder()
                 .accountId(request.getAccountId())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .modifiedIdAt(LocalDateTime.now())
                 .build();
 
         userRepository.save(user);
