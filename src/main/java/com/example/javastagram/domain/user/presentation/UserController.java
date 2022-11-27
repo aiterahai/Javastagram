@@ -1,10 +1,12 @@
 package com.example.javastagram.domain.user.presentation;
 
 import com.example.javastagram.domain.user.presentation.dto.request.ChangeAccountIdRequest;
+import com.example.javastagram.domain.user.presentation.dto.request.ChangePasswordRequest;
 import com.example.javastagram.domain.user.presentation.dto.request.LoginRequest;
 import com.example.javastagram.domain.user.presentation.dto.request.SignUpRequest;
 import com.example.javastagram.domain.user.presentation.dto.response.TokenResponse;
 import com.example.javastagram.domain.user.service.ChangeAccountIdService;
+import com.example.javastagram.domain.user.service.ChangePasswordService;
 import com.example.javastagram.domain.user.service.LoginService;
 import com.example.javastagram.domain.user.service.SignUpService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,7 @@ public class UserController {
     private final SignUpService signUpService;
     private final LoginService loginService;
     private final ChangeAccountIdService changeAccountIdService;
+    private final ChangePasswordService changePasswordService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -38,5 +41,11 @@ public class UserController {
     @PutMapping("/modify/id")
     public void changeAccountId(@RequestBody @Valid ChangeAccountIdRequest request) {
         changeAccountIdService.execute(request);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/modify/password")
+    public void changePassword(@RequestBody @Valid ChangePasswordRequest request) {
+        changePasswordService.execute(request);
     }
 }
